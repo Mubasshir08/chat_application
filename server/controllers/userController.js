@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
-
+const bcrypt = require('bcryptjs');
+const User = require("../models/userModel");
+const jwt = require("jsonwebtoken");
 // register
 const register = async (req,res) => {
     try {
@@ -7,7 +9,7 @@ const register = async (req,res) => {
         if(!fullName || !userName || !password || !confirmPassword){
            return res.status(400).json({message : "All fields are required"})
         }
-        if(fullName !== confirmPassword){
+        if(password !== confirmPassword){
            return res.status(400).json({message : "Password do not match"})
         }
         const user = await User.findOne({userName})
@@ -41,7 +43,22 @@ const login = async (req,res) => {
         if(!userInfo){
             res.status(201).json({message: "Invalid username or password"})
         }
+        const isPasswordMatch = await bcrypt.compare(password, userInfo.password);
+        if(!isPasswordMatch){
+            res.status(201).json({message: "Invalid username or password"})
+        }
+        const tokenData = {
+            userId : userInfo._id
+        }
+        const token = await jwt.sign(tokenData, process.env.SECRET_JWT_KEY, {expiresIn:"1d"})
+        return res.status(200).cookie("token", token, {maxAge : 1*24*60*60*1000, httpOnly: true, sameSite: "strict"}).json({
+            id: userInfo._id,
+            fullName: userInfo.fullName,
+            userName : userInfo.userName,
+        })
     } catch (error) {
         console.log(error)
     }
 }
+
+module.exports = (register, login)
