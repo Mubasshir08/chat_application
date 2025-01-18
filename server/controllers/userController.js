@@ -3,7 +3,7 @@ const bcrypt = require('bcryptjs');
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 // register
-const register = async (req,res) => {
+exports.register = async (req,res) => {
     try {
         const {fullName, userName, password, confirmPassword, gender} = req.body
         if(!fullName || !userName || !password || !confirmPassword){
@@ -36,7 +36,7 @@ const register = async (req,res) => {
 }
 
 // login
-const login = async (req,res) => {
+ exports.login = async (req,res) => {
     try {
         const {userName, password} = req.body
         const userInfo = await User.findOne({userName})
@@ -61,7 +61,7 @@ const login = async (req,res) => {
     }
 }
 
-const logout = (req,res) => {
+exports.logout = (req,res) => {
     try {
         return res.status(200).cookie("token", "", {maxAge:0}).json({
             message: "logout Successfully"
@@ -71,4 +71,13 @@ const logout = (req,res) => {
     }
 }
 
-module.exports = (register, login, logout)
+exports.getOtherUser = async (req,res) => {
+    try {
+        const loggedInUser = req.id;
+        const otherUsers = await User.find({_id:{$ne:loggedInUser}}).select("-password")
+        return res.status(200).json(otherUsers)        
+    } catch (error) {
+        console.log(error)
+    }
+}
+
