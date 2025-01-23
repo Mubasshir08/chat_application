@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // routes
-app.use('/user', userRoute)
-app.use('/message', messageRoute)
+app.use('/user', userRoute);
+app.use('/message', messageRoute);
 
 app.listen(PORT, () => console.log("Hey There Port is" , PORT))
