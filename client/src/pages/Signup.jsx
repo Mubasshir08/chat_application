@@ -11,6 +11,13 @@ const Signup = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     console.log(user);
+    setUser({
+      fullName: '',
+      username: '',
+      password: '',
+      confirmPassword: '',
+      gender: ''
+    });
   }
   return (
     <div className='min-w-[500px]'>
@@ -27,6 +34,7 @@ const Signup = () => {
             type="text"
             placeholder="Full Name"
             onChange={(e) => setUser({ ...user, fullName: e.target.value })}
+            value={user.fullName}
           />
         </div>
         <div className="mb-4">
@@ -39,6 +47,7 @@ const Signup = () => {
             type="text"
             placeholder="Username"
             onChange = {(e) => setUser({ ...user, username: e.target.value })}
+            value={user.username}
           />
         </div>
         <div className="mb-4">
@@ -51,6 +60,7 @@ const Signup = () => {
             type="password"
             placeholder="Password"
             onChange={(e) => setUser({ ...user, password: e.target.value })}
+            value={user.password}
           />
         </div>
         <div className="mb-4">
@@ -63,6 +73,7 @@ const Signup = () => {
             type="password"
             placeholder="Confirm Password"
             onChange={(e) => setUser({ ...user, confirmPassword: e.target.value })}
+            value={user.confirmPassword}
           />
         </div>
         
