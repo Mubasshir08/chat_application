@@ -70,14 +70,14 @@ const Signup = () => {
             <div className="form-control">
                 <label className="label cursor-pointer">
                   <span className="label-text mr-2 text-white">Male</span>
-                  <input type="checkbox" defaultChecked className="checkbox checkbox-primary" />
+                  <input type="checkbox" defaultChecked className="checkbox checkbox-primary" checked={user.gender === "male"} onChange={(e) => setUser({ ...user, gender: "male" })}/>
                 </label>
               </div>
 
               <div className="form-control">
                 <label className="label cursor-pointer">
                   <span className="label-text mr-2 text-white">Female</span>
-                  <input type="checkbox" defaultChecked className="checkbox checkbox-secondary" />
+                  <input type="checkbox" defaultChecked className="checkbox checkbox-secondary" checked={user.gender === "female"} onChange={(e) => setUser({ ...user, gender: "female" })}/>
                 </label>
               </div>
         </div>
