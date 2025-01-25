@@ -7,7 +7,9 @@ function App() {
   const [count, setCount] = useState(0)
 
   return (
-   <RouterProvider router={Route}/>
+    <div className='p-4 h-screen flex items-center justify-center'>
+      <RouterProvider router={Route}/>
+    </div>
   )
 }
 
