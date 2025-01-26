@@ -41,11 +41,11 @@ exports.register = async (req,res) => {
         const {userName, password} = req.body
         const userInfo = await User.findOne({userName})
         if(!userInfo){
-            res.status(201).json({message: "Invalid username or password"})
+           return res.status(404).json({message: "Invalid username or password"})
         }
         const isPasswordMatch = await bcrypt.compare(password, userInfo.password);
         if(!isPasswordMatch){
-            res.status(201).json({message: "Invalid username or password"})
+           return res.status(404).json({message: "Invalid username or password"})
         }
         const tokenData = {
             userId : userInfo._id

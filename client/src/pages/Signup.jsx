@@ -32,7 +32,9 @@ const Signup = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error('An error occurred during registration.');
+      toast.error(
+        error.response.data.message || 'An error occurred during registration.'
+      );
     }
     setUser({
       fullName: '',

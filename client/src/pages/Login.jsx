@@ -18,15 +18,11 @@ const Login = () => {
         withCredentials: true
       });
       console.log(response);
-      if (response.status === 200) {
         toast.success('Login successful!');
-        navigate('/');
-      } else {
-        toast.error('Login failed!');
-      }
+        // navigate('/');
     } catch (error) {
       console.log(error);
-      toast.error('An error occurred during login.');
+      toast.error(error.response.data.message || 'An error occurred during login.');
     }
     console.log(user);
     setUser({
