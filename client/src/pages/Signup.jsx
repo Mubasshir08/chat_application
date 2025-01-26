@@ -1,20 +1,42 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import axios from 'axios'
+import toast from 'react-hot-toast'
+
 
 const Signup = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState({
     fullName: '',
-    username: '',
+    userName: '',
     password: '',
     confirmPassword: '',
     gender: ''
   });
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
     console.log(user);
+    try {
+      const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/user/register`, user, {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        withCredentials: true
+      });
+      console.log(response);
+      if (response.status === 201) {
+        toast.success('Registration successful!');
+        navigate('/login');
+      } else {
+        toast.error('Registration failed!');
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error('An error occurred during registration.');
+    }
     setUser({
       fullName: '',
-      username: '',
+      userName: '',
       password: '',
       confirmPassword: '',
       gender: ''
@@ -47,8 +69,8 @@ const Signup = () => {
             id="username"
             type="text"
             placeholder="Username"
-            onChange = {(e) => setUser({ ...user, username: e.target.value })}
-            value={user.username}
+            onChange = {(e) => setUser({ ...user, userName: e.target.value })}
+            value={user.userName}
           />
         </div>
         <div className="mb-4">

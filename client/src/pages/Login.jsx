@@ -1,16 +1,36 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
-
+import { Link, useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast'
+import axios from 'axios'
 const Login = () => {
+  const navigate = useNavigate();
   const [user, setUser] = useState({
-    username: '',
+    userName: '',
     password: '',
   });
-  const onSubmitHandler = (e) => {
+  const onSubmitHandler = async (e) => {
     e.preventDefault();
+    try {
+      const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/user/login`, user, {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        withCredentials: true
+      });
+      console.log(response);
+      if (response.status === 200) {
+        toast.success('Login successful!');
+        navigate('/');
+      } else {
+        toast.error('Login failed!');
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error('An error occurred during login.');
+    }
     console.log(user);
     setUser({
-      username: '',
+      userName: '',
       password: '',
     });
   }
@@ -29,8 +49,8 @@ const Login = () => {
               id="username"
               type="text"
               placeholder="Username"
-              onChange={(e) => setUser({ ...user, username: e.target.value })}
-              value={user.username}
+              onChange={(e) => setUser({ ...user, userName: e.target.value })}
+              value={user.userName}
             />
           </div>
 
