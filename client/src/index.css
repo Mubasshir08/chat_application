@@ -3,8 +3,9 @@
 @tailwind utilities;
 
 body{
-    background: url('./assets/images/bg-img.jpg');
+    background: url('./assets/images/bg-img_2.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     height: 100vh;
+    background-position: center;
 }

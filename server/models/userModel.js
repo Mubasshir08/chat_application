@@ -15,9 +15,9 @@ var userModel = new mongoose.Schema({
         type:String,
         required:true,
     },
-    profilePhoto:{
+    profilePic:{
         type:String,
-        default:""
+        default: null
     },
     gender:{
         type:String,

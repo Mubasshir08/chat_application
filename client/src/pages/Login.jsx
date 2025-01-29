@@ -36,8 +36,8 @@ const Login = () => {
   }
   return (
     <div className='min-w-[500px]'>
-      <div className="h-full w-full bg-red-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100">
-        <h1 className='text-3xl font-bold text-center mt-5 mb-3'>Login</h1>
+      <div className="h-full w-full bg-blue-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100">
+        <h1 className='text-3xl font-bold text-white text-center mt-5 mb-3'>Login</h1>
         <form className="p-4" onSubmit={onSubmitHandler}>
 
           <div className="mb-4">
@@ -45,7 +45,7 @@ const Login = () => {
               Username
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow input input-md appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
               id="username"
               type="text"
               placeholder="Username"
@@ -59,7 +59,7 @@ const Login = () => {
               Password
             </label>
             <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              className="shadow input input-md appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
               id="password"
               type="password"
               placeholder="Password"
