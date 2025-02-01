@@ -4,6 +4,8 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const app = express();
+const path = require('path');
+
 
 const userRoute = require('./routes/userRoute');
 const messageRoute = require('./routes/messageRoute');
@@ -21,5 +23,8 @@ app.use(cookieParser());
 // routes
 app.use('/user', userRoute);
 app.use('/message', messageRoute);
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+// app.use('/uploads', express.static('uploads'));
+
 
 app.listen(PORT, () => console.log("Hey There Port is" , PORT))

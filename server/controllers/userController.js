@@ -24,7 +24,6 @@ exports.register = async (req, res) => {
         if (!req.file) {
             return res.status(400).json({ message: "Profile picture is required" });
         }        
-
         const hashedPassword = await bcrypt.hash(password, 10);
 
         // Handle file upload
