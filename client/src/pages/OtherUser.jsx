@@ -2,8 +2,7 @@ import React from 'react'
 
 const OtherUser = () => {
     return (
-        <div>
-            <div className="divider"></div>
+        <div className='hover:bg-blue-400 hover:rounded-lg py-6'>
             <div className='flex items-center space-x-2 ml-3'>
                 <div className="avatar online">
                     <div className="w-12 rounded-full">
@@ -12,7 +11,7 @@ const OtherUser = () => {
                 </div>
                 <h3 className='text-white'>Jessy</h3>
             </div>
-            <div className="divider"></div>
+            
         </div>
     )
 }
