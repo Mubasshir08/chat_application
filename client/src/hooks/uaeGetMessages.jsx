@@ -6,7 +6,7 @@ const uaeGetMessages = () => {
     const getMessages = async () => {
       try {
         const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/message/679a66c7335e8cf69591ece6`);
-        console.log(response.data);
+        // console.log(response.data);
       } catch (error) {
         console.error(error);
       }

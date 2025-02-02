@@ -6,8 +6,8 @@ import { useSelector } from 'react-redux';
 const UsersDisplay = () => {
   useGetOtherUsers();
   const { otherUsers } = useSelector(store => store.user)
-  console.log(otherUsers)
-  if (!otherUsers) return <h1 className='text-center text-white'>Loading...</h1>;
+  // console.log(otherUsers)
+  if (!otherUsers) return <h1 className='text-center text-white flex-1'>Loading...</h1>;
   return (
     <div className='flex-1'>
       {

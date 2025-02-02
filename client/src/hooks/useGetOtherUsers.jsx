@@ -10,7 +10,7 @@ const useGetOtherUsers = () => {
         try {
             axios.defaults.withCredentials = true;
             const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/user`)
-            console.log(response.data)
+            // console.log(response.data)
             dispatch(setOtherUsers(response.data))
         } catch (error) {
             console.log(error)
