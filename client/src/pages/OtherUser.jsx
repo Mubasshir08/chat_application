@@ -10,8 +10,8 @@ const OtherUser = ({user}) => {
 
     const isSelectedHandler = (user) => {
         dispatch(setSelectedUser(user));
-        console.log(selectedUser);
-        console.log('Selected User ID:', user._id);
+        // console.log(selectedUser);
+        // console.log('Selected User ID:', user._id);
     }
     return (
         <div onClick={() => isSelectedHandler(user)} className={`${selectedUser && selectedUser._id === user._id ? 'bg-white text-black' : 'text-white'} hover:bg-blue-400 rounded-lg py-6`}>

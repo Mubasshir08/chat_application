@@ -1,8 +1,9 @@
 import React from 'react'
 
-const Message = ({receiver}) => {
+const Message = ({messageInfo}) => {
+  console.log(messageInfo);
   return (
-    <div className={`chat ${receiver === 'me' ? 'chat-start' : 'chat-end'}`}>
+    <div className={`chat chat-end`}>
   <div className="chat-image avatar">
     <div className="w-10 rounded-full">
       <img
@@ -13,7 +14,7 @@ const Message = ({receiver}) => {
   <div className="chat-footer">
     <time className="text-xs opacity-50 text-white">12:45</time>
   </div>
-  <div className={`chat-bubble ${receiver === 'me' ? 'chat-bubble-warning' : 'chat-bubble-info'}`}>You were the Chosen One!</div>
+  <div className={`chat-bubble`}>{messageInfo.message}</div>
 </div>
   )
 }
