@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 
 const Sidebar = () => {
   const navigate = useNavigate();
-  const logout = async () => {
+  const logoutHandler = async () => {
     try {
       const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/user/logout`);
       console.log(response.data)
@@ -28,7 +28,7 @@ const Sidebar = () => {
       </form>
       <div className="divider"></div>
         <UsersDisplay />
-        <button className='btn btn-error text-white rounded-none' onClick={logout}>Logout</button>
+        <button className='btn btn-error text-white rounded-none' onClick={logoutHandler}>Logout</button>
     </div>
   )
 }

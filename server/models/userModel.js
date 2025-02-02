@@ -23,8 +23,8 @@ var userModel = new mongoose.Schema({
         type:String,
         enum:["male","female"],
         required:true
-    }
-});
+    },
+}, {timestamps: true});
 
 //Export the model
 module.exports = mongoose.model('User', userModel);

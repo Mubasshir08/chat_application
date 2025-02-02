@@ -10,7 +10,7 @@ var conversationModel = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:"Message"
     }]
-});
+}, {timestamps: true});
 
 //Export the model
 module.exports = mongoose.model('Conversation', conversationModel);

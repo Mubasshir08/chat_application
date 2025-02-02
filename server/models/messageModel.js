@@ -16,7 +16,7 @@ var messageModel = new mongoose.Schema({
         type:String,
         required:true
    }
-});
+}, {timestamps: true});
 
 //Export the model
 module.exports = mongoose.model('Message', messageModel);
