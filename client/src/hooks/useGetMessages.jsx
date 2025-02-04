@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import {useDispatch} from 'react-redux';
+import {setMessages} from '../redux/messageSlice';
 
 const useGetMessages = (id) => {
   const [messages, setMessages] = useState([]);

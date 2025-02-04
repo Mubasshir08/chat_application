@@ -1,7 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 
-const Message = ({ messageInfo }) => {
+const Message = ({ messageInfo, profilePic }) => {
+  // console.log(profilePic);
   const { selectedUser } = useSelector(state => state.user);
   // console.log(selectedUser)
   // console.log(messageInfo);
@@ -11,7 +12,7 @@ const Message = ({ messageInfo }) => {
         <div className="w-10 rounded-full">
           <img
             alt="Tailwind CSS chat bubble component"
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+            src={selectedUser._id === messageInfo.senderId ? `${import.meta.env.VITE_SERVER_URL}${selectedUser.profilePic}` : "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"} />
         </div>
       </div>
       <div className="chat-footer">
