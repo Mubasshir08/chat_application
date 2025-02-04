@@ -4,12 +4,15 @@ import UsersDisplay from './UsersDisplay';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
 
 const Sidebar = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const logoutHandler = async () => {
     try {
       const response = await axios.get(`${import.meta.env.VITE_SERVER_URL}/user/logout`);
+      dispatch({ type: 'LOGOUT' });
       console.log(response.data)
       if (response.status === 200) toast.success(response.data.message);
       navigate('/login');

@@ -6,7 +6,8 @@ import { useState } from 'react'
 
 const Messages = () => {
   const { selectedUser } = useSelector(state => state.user);
-  const { messages, errorMessages } = useGetMessages(selectedUser ? selectedUser._id : null);
+  // const { messages } = useSelector(state => state.message);
+  const { messages,errorMessages } = useGetMessages(selectedUser ? selectedUser._id : null);
   return (
     <div className='pt-5 px-2 flex-1 overflow-auto'>
       {
