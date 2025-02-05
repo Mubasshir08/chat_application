@@ -27,9 +27,7 @@ exports.sendMessage = async (req,res) => {
     }
     await getConversation.save();
 
-    return res.status(201).json({
-        message:"message send successfully"
-    });
+    return res.status(201).json(newMessage);
 
     } catch (error) {
         console.log(error);
@@ -46,7 +44,7 @@ exports.getMessage = async (req,res) => {
 
         // Check if the conversation exists
         if (!conversation) {
-            return res.status(404).json({
+            return res.status(200).json({
                 message: "No conversation found between these participants."
             });
         }
