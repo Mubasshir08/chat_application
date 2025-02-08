@@ -3,8 +3,9 @@ require('dotenv').config()
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
-const app = express();
+// const app = express();
 const path = require('path');
+const {app, server} = require('./socket/socket');
 
 
 const userRoute = require('./routes/userRoute');
@@ -27,4 +28,4 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // app.use('/uploads', express.static('uploads'));
 
 
-app.listen(PORT, () => console.log("Hey There Port is" , PORT))
+server.listen(PORT, () => console.log("Hey There Port is" , PORT))

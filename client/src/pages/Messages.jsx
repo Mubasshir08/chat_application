@@ -11,7 +11,7 @@ const Messages = () => {
   return (
     <div className='pt-5 px-2 flex-1 overflow-auto'>
       {
-        messages.length > 0 ? messages.map(message => (
+        messages && messages.length > 0 ? messages.map(message => (
           <Message key={message._id} messageInfo={message} />
         )) : <p className='text-white text-center mt-52'>{errorMessages}</p>
       }

@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import Sidebar from './Sidebar'
 import MessageContainer from './MessageContainer'
 import toast from 'react-hot-toast';
-
+import { useSelector } from 'react-redux';
 const HomePage = () => {
   const navigate = useNavigate();
-
+  const {authUser,selectedUser} = useSelector(state => state.user)
   useEffect(() => {
     const checkAuth = async () => {
       try {
@@ -32,7 +32,14 @@ const HomePage = () => {
   return (
     <div className='h-full w-full bg-gray-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 flex'>
       <Sidebar />
-      <MessageContainer />
+      {
+        selectedUser ? 
+        <MessageContainer /> : 
+        <div className='text-center mx-auto translate-y-1/2'>
+          <h1 className='text-2xl text-white'>Hello {authUser?.userName || ''} !!</h1>
+          <h3 className='text-gray-400'>Let's Start The Chat</h3>
+        </div>
+      }
     </div>
   )
 }

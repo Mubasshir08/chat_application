@@ -12,17 +12,19 @@ const SendMessage = () => {
     // console.log(message);
     const onSubmitHandler = async (e) => {
         e.preventDefault();
-        try {
-            const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/message/send/${selectedUser._id}`,{message},{
-                headers : {
-                    'Content-Type' : 'application/json'
-                },
-                withCredentials: true
-            });
-            console.log(response);
-            dispatch(setMessages([...messages,response.data]))
-        } catch (error) {
-            console.log(error)
+        if(selectedUser){
+            try {
+                const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/message/send/${selectedUser._id}`,{message},{
+                    headers : {
+                        'Content-Type' : 'application/json'
+                    },
+                    withCredentials: true
+                });
+                console.log(response);
+                dispatch(setMessages([...messages,response.data]))
+            } catch (error) {
+                console.log(error)
+            }
         }
         setMessage('');
     };

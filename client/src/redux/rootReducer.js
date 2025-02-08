@@ -2,10 +2,11 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import userReducer from './userSlice';
 import messageReducer from './messageSlice';
-
+import socketReducer from './socketSlice';
 const appReducer = combineReducers({
   user: userReducer,
   message: messageReducer,
+  socket : socketReducer
 });
 
 const rootReducer = (state, action) => {
