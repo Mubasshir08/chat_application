@@ -13,6 +13,12 @@ const io = new Server(server, {
 
 const userSocketMap = {};
 
+getReceiverSocketId = (receiverId) => {
+    console.log(userSocketMap)
+    return userSocketMap[receiverId];
+}
+
+
 io.on('connection', (socket) => {
     console.log('Connected User', socket.id);
     const userId = socket.handshake.query.userId;
@@ -22,7 +28,7 @@ io.on('connection', (socket) => {
         userSocketMap[userId] = socket.id;
     }
 
-    console.log(userSocketMap);
+    // console.log(userSocketMap);
     io.emit('getOnlineUsers',Object.keys(userSocketMap));
     
     socket.on('disconnect', () => {
@@ -32,6 +38,6 @@ io.on('connection', (socket) => {
     })
 
 });
-// console.log(userSocketMap)
+// console.log(userSocketMap);
 
-module.exports = {app,server,io};
+module.exports = {app,server,io,getReceiverSocketId};

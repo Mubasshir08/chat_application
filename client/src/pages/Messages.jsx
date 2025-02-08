@@ -3,11 +3,14 @@ import Message from './Message'
 import useGetMessages from '../hooks/useGetMessages'
 import { useSelector } from 'react-redux'
 import { useState } from 'react'
+import useGetRealTimeMessages from '../hooks/useGetRealTimeMessages'
 
 const Messages = () => {
+  // useGetRealTimeMessages();
   const { selectedUser } = useSelector(state => state.user);
   // const { messages } = useSelector(state => state.message);
-  const { messages,errorMessages } = useGetMessages(selectedUser ? selectedUser._id : null);
+  const { messages,errorMessages } = useGetRealTimeMessages(selectedUser ? selectedUser._id : null);
+  console.log(messages)
   return (
     <div className='pt-5 px-2 flex-1 overflow-auto'>
       {

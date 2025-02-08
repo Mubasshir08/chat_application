@@ -20,7 +20,7 @@ const SendMessage = () => {
                     },
                     withCredentials: true
                 });
-                console.log(response);
+                // console.log(response);
                 dispatch(setMessages([...messages,response.data]))
             } catch (error) {
                 console.log(error)

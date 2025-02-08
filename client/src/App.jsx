@@ -11,6 +11,7 @@ function App() {
   const dispatch = useDispatch();
   const { authUser } = useSelector(state => state.user);
   const { socket } = useSelector(state => state.socket);
+  // useSelector(state => console.log(state.socket))
   // console.log(authUser.id)
   useEffect(() => {
     if (authUser) {
