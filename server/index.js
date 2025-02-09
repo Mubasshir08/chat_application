@@ -14,7 +14,7 @@ const dbConfig = require('./config/database')();
 const PORT = process.env.PORT || 3000;
 
 app.use(cors({
-    origin: 'https://chat-app-cool.vercel.app',
+    origin: '*',
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"] 
 }));
