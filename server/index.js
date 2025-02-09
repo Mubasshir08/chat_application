@@ -11,7 +11,7 @@ const {app, server} = require('./socket/socket');
 const userRoute = require('./routes/userRoute');
 const messageRoute = require('./routes/messageRoute');
 const dbConfig = require('./config/database')();
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 
 app.use(cors({
     origin: process.env.CLIENT_URL,
