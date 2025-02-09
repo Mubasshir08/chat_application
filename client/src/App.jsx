@@ -15,7 +15,7 @@ function App() {
   // console.log(authUser.id)
   useEffect(() => {
     if (authUser) {
-      console.log("Connecting socket...");
+      // console.log("Connecting socket...");
       const newSocket = io(`${import.meta.env.VITE_SERVER_URL}`, {
         query: { userId: authUser.id }
       });
@@ -24,7 +24,7 @@ function App() {
         dispatch(setOnlineUsers(onlineUsers));
       })
       return () => {
-        console.log("Disconnecting socket...");
+        // console.log("Disconnecting socket...");
         newSocket.disconnect();
       };
     } else {

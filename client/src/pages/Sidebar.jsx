@@ -22,8 +22,8 @@ const Sidebar = () => {
     }
    
   },[searchInput, searchResult]);
-  console.log('searchResult: ',searchResult)
-  console.log('searchInput: ',searchInput)
+  // console.log('searchResult: ',searchResult);
+  // console.log('searchInput: ',searchInput);
 
 
 const searchBarHandler = (e) => {
@@ -34,7 +34,7 @@ const searchBarHandler = (e) => {
   }
 }
 
-console.log('isUserFound' ,isUserFound)
+// console.log('isUserFound' ,isUserFound);
 
   const logoutHandler = async () => {
     try {
