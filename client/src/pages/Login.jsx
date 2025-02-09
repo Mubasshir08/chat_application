@@ -14,7 +14,7 @@ const Login = () => {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/user/login`, user, {
+      const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}user/login`, user, {
         headers: {
           'Content-Type': 'application/json'
         },
