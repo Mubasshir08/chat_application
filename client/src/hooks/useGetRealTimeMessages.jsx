@@ -5,11 +5,11 @@ import { setMessages } from '../redux/messageSlice';
 
 const useGetRealTimeMessages = (id) => {
   const dispatch = useDispatch();
-  const { messages } = useSelector((state) => state.message);
+  const {messages}  = useSelector((state) => state.message);
   const { socket } = useSelector((state) => state.socket);
   const [errorMessages, setErrorMessages] = useState('');
 
-  // ✅ 1️⃣ পুরোনো মেসেজ লোড করার ফাংশন
+
   useEffect(() => {
     const getMessages = async () => {
       try {
@@ -33,19 +33,21 @@ const useGetRealTimeMessages = (id) => {
     getMessages();
   }, [id, dispatch]);
 
-  // ✅ 2️⃣ নতুন মেসেজ রিয়েল-টাইমে যোগ করার ফাংশন
+
   useEffect(() => {
     const handleNewMessage = (newMessage) => {
       console.log("New Message Received:", newMessage);
       dispatch(setMessages([...messages, newMessage]));
     };
+    
+    
 
     socket?.on("newMessage", handleNewMessage);
 
     return () => {
       socket?.off("newMessage", handleNewMessage);
     };
-  }, [socket, dispatch]);
+  }, [socket,messages, dispatch]);
 
   return { messages, errorMessages };
 };
