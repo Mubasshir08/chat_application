@@ -14,7 +14,7 @@ const dbConfig = require('./config/database')();
 const PORT = process.env.PORT || 3000;
 
 app.use(cors({
-    origin: '*',
+    origin: process.env.CLIENT_URL,
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"] 
 }));
