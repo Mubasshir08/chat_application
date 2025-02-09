@@ -5,6 +5,7 @@ import axios from 'axios'
 import { useDispatch } from 'react-redux'
 import { setAuthUser } from '../redux/userSlice'
 const Login = () => {
+  console.log(import.meta.env.VITE_SERVER_URL)
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [user, setUser] = useState({
