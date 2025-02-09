@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import Route from './routes/route'
+import Route from './routes/Route'
 import './App.css'
 import { RouterProvider } from 'react-router-dom'
 import io from 'socket.io-client'
