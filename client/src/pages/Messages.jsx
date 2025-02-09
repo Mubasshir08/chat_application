@@ -10,7 +10,7 @@ const Messages = () => {
   const { selectedUser } = useSelector(state => state.user);
   // const { messages } = useSelector(state => state.message);
   const { messages,errorMessages } = useGetRealTimeMessages(selectedUser ? selectedUser._id : null);
-  console.log(messages)
+  // console.log(messages);
   return (
     <div className='pt-5 px-2 flex-1 overflow-auto'>
       {

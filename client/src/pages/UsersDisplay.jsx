@@ -3,7 +3,8 @@ import OtherUser from './OtherUser';
 import useGetOtherUsers from '../hooks/UseGetOtherUsers';
 import { useSelector } from 'react-redux';
 
-const UsersDisplay = () => {
+const UsersDisplay = ({searchedUser}) => {
+  // console.log(searchedUser);
   useGetOtherUsers();
   const { otherUsers } = useSelector(store => store.user)
   // console.log(otherUsers)
@@ -11,7 +12,9 @@ const UsersDisplay = () => {
   return (
     <div className='flex-1'>
       {
-        otherUsers.map(user => (
+       searchedUser ? searchedUser.map(user => (
+        <OtherUser key={user._id} user={user} />
+      )) : otherUsers.map(user => (
           <OtherUser key={user._id} user={user} />
         ))
       }
