@@ -32,7 +32,7 @@ const Signup = () => {
     }
 
     try {
-      const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}user/register`, formData, {
+      const response = await axios.post(`${import.meta.env.VITE_SERVER_URL}/user/register`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

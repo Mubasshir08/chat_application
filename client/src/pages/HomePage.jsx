@@ -10,7 +10,7 @@ const HomePage = () => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_SERVER_URL}user`, {
+        const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/user`, {
           credentials: 'include', // Important to send cookies
         });
 
