@@ -27,7 +27,10 @@ exports.register = async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, 10);
 
         // Handle file upload
-        const profilePic = req.file ? `/uploads/${req.file.filename}` : null;
+        // const profilePic = req.file ? `/uploads/${req.file.filename}` : null;
+
+        // Use Cloudinary URL
+        const profilePic = req.file.path;
 
         // Create user
         await User.create({
