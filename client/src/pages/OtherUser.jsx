@@ -21,7 +21,7 @@ const OtherUser = ({user}) => {
             <div className='flex items-center space-x-2 ml-3'>
                 <div className={`avatar ${isOnline ? "online" : ""}`}>
                     <div className="w-12 rounded-full">
-                        <img src={`${import.meta.env.VITE_SERVER_URL}${profilePic}`} />
+                        <img src={`${profilePic}`} />
                     </div>
                 </div>
                 <h3 className=''>{userName}</h3>
