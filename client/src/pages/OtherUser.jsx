@@ -9,7 +9,7 @@ const OtherUser = ({user}) => {
     const isOnline = onlineUsers && onlineUsers.includes(_id);
     // console.log(isOnline);
     // console.log(_id);
-    console.log('Profile Pic URL:', profilePic);
+    // console.log('Profile Pic URL:', profilePic);
 
     const isSelectedHandler = (user) => {
         dispatch(setSelectedUser(user));

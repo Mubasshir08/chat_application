@@ -11,10 +11,10 @@ const Message = ({ messageInfo }) => {
   useEffect(() => {
     scroll.current?.scrollIntoView({behavior:"smooth"})
     if(selectedUser._id === messageInfo.senderId) {
-      setProfilePic(`${import.meta.env.VITE_SERVER_URL}${selectedUser.profilePic}`);
+      setProfilePic(`${selectedUser.profilePic}`);
     }
     else{
-      setProfilePic(`${import.meta.env.VITE_SERVER_URL}${authUser.profilePic}`);
+      setProfilePic(`${authUser.profilePic}`);
     }
   },[selectedUser, messageInfo])
   // console.log(selectedUser)
