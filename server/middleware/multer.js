@@ -1,34 +1,18 @@
 const multer = require('multer');
-const path = require('path');
 const { v4: uuidv4 } = require('uuid');
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+const cloudinary = require('../config/cloudinary');
 
-// Set up Multer storage engine
-const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'uploads/'); // specify the directory to store images
-    },
-    filename: (req, file, cb) => {
-        const uniqueSuffix = uuidv4();
-        const ext = path.extname(file.originalname);
-        cb(null, `${uniqueSuffix}${ext}`); // Set the filename as unique
+// Configure Multer storage to upload directly to Cloudinary
+const storage = new CloudinaryStorage({
+    cloudinary,
+    params: {
+        folder: 'chat_app_uploads',  // Folder name in Cloudinary
+        format: async (req, file) => 'png', // Convert all images to PNG
+        public_id: (req, file) => uuidv4() // Unique filename
     }
 });
 
-// File filter to allow only image files
-const fileFilter = (req, file, cb) => {
-    const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
-    if (allowedTypes.includes(file.mimetype)) {
-        cb(null, true);
-    } else {
-        cb(new Error('Only .jpg, .jpeg, .png formats are allowed!'), false);
-    }
-};
-
-// Initialize multer
-const upload = multer({
-    storage,
-    fileFilter,
-    limits: { fileSize: 5 * 1024 * 1024 }, // Max file size: 5MB
-});
+const upload = multer({ storage });
 
 module.exports = upload;
