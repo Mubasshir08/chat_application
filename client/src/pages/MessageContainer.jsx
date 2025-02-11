@@ -13,7 +13,7 @@ const MessageContainer = () => {
         <div className={`${selectedUser && selectedUser.profilePic ? "avatar" : "py-8"} ${isOnline ? "online" : ""} ml-1`}>
           <div className="w-16 rounded-full">
           {selectedUser && selectedUser.profilePic && (
-              <img src={`${import.meta.env.VITE_SERVER_URL}${selectedUser.profilePic}`} alt='Profile Pic' />
+              <img src={`${selectedUser.profilePic}`} alt='Profile Pic' />
             )}
           </div>
         </div>
