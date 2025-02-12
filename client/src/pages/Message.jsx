@@ -16,7 +16,21 @@ const Message = ({ messageInfo }) => {
     else{
       setProfilePic(`${authUser.profilePic}`);
     }
-  },[selectedUser, messageInfo])
+  },[selectedUser, messageInfo]);
+
+  const formatTime = (timestamp) => {
+    const date = new Date(timestamp);
+    const options = {
+      timeZone: "Asia/Dhaka",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: true // 12-hour format with AM/PM
+    };
+    return new Intl.DateTimeFormat("en-US", options).format(date);
+  };
+  
+
   // console.log(selectedUser)
   // console.log(messageInfo);
   return (
@@ -29,7 +43,7 @@ const Message = ({ messageInfo }) => {
         </div>
       </div>
       <div className="chat-footer">
-        <time className="text-xs opacity-50 text-white">12:45</time>
+        <time className="text-xs opacity-50 text-white">{formatTime(messageInfo.createdAt)}</time>
       </div>
       <div className={`chat-bubble`}>{messageInfo.message}</div>
     </div>
