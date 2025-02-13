@@ -16,6 +16,7 @@ const HomePage = () => {
 
         if (response.status === 401) {
           const data = await response.json();
+          console.log(data);
           toast.error(data.message);
           navigate('/login'); // Redirect to login if not authenticated
           // toast.error('You are not authenticated');

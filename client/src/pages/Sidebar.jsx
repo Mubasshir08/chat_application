@@ -57,7 +57,7 @@ const searchBarHandler = (e) => {
         </button>
       </form>
       <div className="divider"></div>
-        {isUserFound ? <UsersDisplay searchedUser={searchResult}/> : <h3>Not Found</h3>}
+        {isUserFound ? <UsersDisplay searchedUser={searchResult}/> : <h3 className='flex-1'>Not Found</h3>}
         <button className='btn btn-error text-white rounded-none' onClick={logoutHandler}>Logout</button>
     </div>
   )
